@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"encoding/base64"
 	"log"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -15,18 +14,12 @@ func handler(ctx context.Context, event events.KinesisEvent) error {
 	logger := logging.NewJSONLogger(ctx)
 
 	for _, record := range event.Records {
-		data, err := base64.StdEncoding.DecodeString(record.Kinesis.Data)
-		if err != nil {
-			logger.ErrorContext(ctx, "failed to decode Kinesis data", "error", err)
-			continue
-		}
-
 		logger.InfoContext(ctx, "processing Kinesis record",
 			"eventID", record.EventID,
 			"eventName", record.EventName,
 			"sequenceNumber", record.Kinesis.SequenceNumber,
 			"partitionKey", record.Kinesis.PartitionKey,
-			"data", string(data),
+			"data", string(record.Kinesis.Data),
 		)
 	}
 
