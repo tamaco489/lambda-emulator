@@ -25,7 +25,7 @@ Solves the following challenges in local development with `aws-lambda-go`:
 
 #### Installation
 ```bash
-go install github.com/tamaco489/lambda-emulator/cmd/lambda-emulator@latest
+go install github.com/tamaco489/lambda-emulator/cmd/emulator@latest
 ```
 
 #### Environment Variables
@@ -49,7 +49,7 @@ lsof -i :9000
 
 Terminal 2: Invoke with event
 ```bash
-go run cmd/lambda-emulator/main.go -event examples/dynamodb/event.json
+go run cmd/emulator/main.go -event examples/dynamodb/event.json
 ```
 
 Terminal 1: Expected output

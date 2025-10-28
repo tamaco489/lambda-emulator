@@ -23,5 +23,5 @@ go run handler.go  # or main.go
 
 **Terminal 2:**
 ```bash
-go run cmd/lambda-emulator/main.go -event examples/{example-name}/event.json
+go run cmd/emulator/main.go -event examples/{example-name}/event.json
 ```
