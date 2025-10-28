@@ -1,6 +1,4 @@
-# CLAUDE.md
-
-##  lambda-emulator
+#  lambda-emulator
 
 > AWS Lambda関数をローカルでエミュレートするツール
 
