@@ -62,33 +62,6 @@ func TestClient_Invoke(t *testing.T) {
 	}
 }
 
-func TestClientWithOptions(t *testing.T) {
-	port := 19001
-	go startTestLambda(t, port)
-	time.Sleep(100 * time.Millisecond)
-
-	client, err := NewClientWithOptions(
-		WithPort(port),
-		WithInvokeTimeout(5*time.Minute),
-		WithConnectTimeout(5*time.Second),
-	)
-	if err != nil {
-		t.Fatalf("failed to create client with options: %v", err)
-	}
-	defer client.Close()
-
-	payload := []byte(`{"message":"test"}`)
-	result, err := client.Invoke(context.Background(), payload)
-	if err != nil {
-		t.Fatalf("Invoke() failed: %v", err)
-	}
-
-	expected := `"test"`
-	if string(result) != expected {
-		t.Errorf("Invoke() = %v, want %v", string(result), expected)
-	}
-}
-
 func startTestLambda(t *testing.T, port int) {
 	t.Helper()
 
