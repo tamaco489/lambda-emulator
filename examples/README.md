@@ -1,55 +1,27 @@
 # Examples
 
-## セットアップ
+## サンプル一覧
 
-各exampleディレクトリで.envファイルを作成：
+| Example | 説明 | イベントタイプ |
+|---------|------|--------------|
+| basic | 最もシンプルな使用例 | カスタムイベント |
+| alb | Application Load Balancerターゲットグループ | `events.ALBTargetGroupRequest` |
+| apigateway | API Gatewayプロキシ統合 | `events.APIGatewayProxyRequest` |
+| dynamodb | DynamoDB Streamsイベント処理 | `events.DynamoDBEvent` |
+| eventbridge | EventBridgeカスタムイベント | `events.CloudWatchEvent` |
+| kinesis | Kinesisデータストリーム処理 | `events.KinesisEvent` |
+| s3 | S3 Putイベント処理 | `events.S3Event` |
+| sqs | SQSキューからのメッセージ処理 | `events.SQSEvent` |
 
-```bash
-cd examples/basic  # または examples/sqs
-cp ../../.env_sample .env
-```
-
-## Basic Example
-
-最もシンプルな使用例。
-
-### 実行方法
+## 実行方法
 
 **Terminal 1:**
 ```bash
-cd examples/basic
-go run main.go
+cd examples/{example-name}
+go run handler.go  # または main.go
 ```
 
 **Terminal 2:**
 ```bash
-go run cmd/lambda-emulator/main.go -event examples/basic/event.json
+go run cmd/lambda-emulator/main.go -event examples/{example-name}/event.json
 ```
-
-**期待される出力:**
-```json
-{"reply":"Hello, World"}
-```
-
----
-
-## SQS Example
-
-SQSイベントを処理する例。
-
-### 実行方法
-
-**Terminal 1:**
-```bash
-cd examples/sqs
-go run handler.go
-```
-
-**Terminal 2:**
-```bash
-go run cmd/lambda-emulator/main.go -event examples/sqs/event.json
-```
-
-**期待される出力:**
-- Terminal 1にSQSメッセージ処理ログが表示される
-- Terminal 2に空のレスポンスが返る

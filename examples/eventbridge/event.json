@@ -1,0 +1,15 @@
+{
+  "version": "0",
+  "id": "89d1a02d-5ec7-412e-82f5-13505f849b41",
+  "detail-type": "UserSignUp",
+  "source": "custom.myapp",
+  "account": "123456789012",
+  "time": "2024-01-01T12:00:00Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "userId": "user-123",
+    "email": "user@example.com",
+    "timestamp": "2024-01-01T12:00:00Z"
+  }
+}

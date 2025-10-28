@@ -1,0 +1,20 @@
+{
+  "resource": "/hello",
+  "path": "/hello",
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"name\":\"World\"}",
+  "isBase64Encoded": false,
+  "requestContext": {
+    "accountId": "123456789012",
+    "apiId": "test-api-id",
+    "httpMethod": "POST",
+    "identity": {
+      "sourceIp": "127.0.0.1"
+    },
+    "path": "/hello",
+    "stage": "prod"
+  }
+}

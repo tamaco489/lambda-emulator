@@ -1,0 +1,19 @@
+{
+  "requestContext": {
+    "elb": {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:123456789012:targetgroup/my-target-group/50dc6c495c0c9188"
+    }
+  },
+  "httpMethod": "GET",
+  "path": "/api/users",
+  "queryStringParameters": {
+    "page": "1"
+  },
+  "headers": {
+    "accept": "text/html",
+    "host": "my-alb-123456789.us-east-1.elb.amazonaws.com",
+    "user-agent": "Mozilla/5.0"
+  },
+  "body": "",
+  "isBase64Encoded": false
+}
