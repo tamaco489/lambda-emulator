@@ -1,51 +1,51 @@
-#  lambda-emulator
+# lambda-emulator
 
-> AWS Lambda関数をローカルでエミュレートするツール
+> A tool to emulate AWS Lambda functions locally
 
-## 目次
-- [概要](#概要)
-- [前提条件](#前提条件)
-- [セットアップ・使い方](#セットアップ・使い方)
+## Table of Contents
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Setup & Usage](#setup--usage)
 
-## 概要
+## Overview
 
-`aws-lambda-go`を使ったローカル開発における以下の課題を解決する
+Solves the following challenges in local development with `aws-lambda-go`:
 
-- **RPCクライアントの不在**: `lambda.Start()`で起動するRPCサーバーへの接続コードを毎回書く必要がある → `emulator`で抽象化
-- **2段階プロトコル**: Ping→Invokeの呼び出し順序を理解・実装する必要がある → 内部で自動実行
-- **ログの不足**: Lambda固有情報（コールドスタート、リクエストID等）が標準ログに含まれない → `logging`で自動付与
-- **デプロイ中心**: コンテナ/SAM必須で軽量なローカルテストが困難 → CLIで即座に実行可能
-- **CLIツール不在**: テストのたびにコードを書く必要がある → `lambda-emulator`コマンド一発実行
+- **Missing RPC Client**: Need to write connection code to the RPC server started by `lambda.Start()` every time → Abstracted with `emulator`
+- **Two-phase Protocol**: Need to understand and implement Ping→Invoke call sequence → Automatically executed internally
+- **Insufficient Logging**: Lambda-specific information (cold start, request ID, etc.) not included in standard logs → Automatically added with `logging`
+- **Deploy-first Approach**: Lightweight local testing difficult due to mandatory container/SAM → Instantly executable with CLI
+- **No CLI Tool**: Need to write code for every test → Single command execution with `lambda-emulator`
 
-## 前提条件
+## Prerequisites
 
-- Go 1.25 以上
+- Go 1.25 or higher
 
-## セットアップ・使い方
+## Setup & Usage
 
-### インストール
+### Installation
 ```bash
 go install github.com/tamaco489/lambda-emulator/cmd/lambda-emulator@latest
 ```
 
-### 環境変数設定
+### Environment Variables
 ```bash
 cp .env_sample .env
-# .envで_LAMBDA_SERVER_PORTなどを設定
+# Configure _LAMBDA_SERVER_PORT and other settings in .env
 ```
 
-### 使い方
+### Usage
 ```bash
-# Terminal 1: Lambda関数起動（.envから環境変数読み込み）
+# Terminal 1: Start Lambda function (loads environment variables from .env)
 go run main.go
 
-# Terminal 2: 実行
+# Terminal 2: Execute
 lambda-emulator -event event.json
 ```
 
-### ライブラリとして使用
+### Use as Library
 ```bash
 go get github.com/tamaco489/lambda-emulator
 ```
 
-詳細は `examples/` ディレクトリを参照。
+See `examples/` directory for details.
