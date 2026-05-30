@@ -19,7 +19,7 @@ Solves the following challenges in local development with `aws-lambda-go`:
 
 ### Prerequisites
 
-- Go 1.25 or higher
+- Go 1.26 or higher
 
 ### Setup
 
